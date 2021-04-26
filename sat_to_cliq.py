@@ -1,6 +1,10 @@
 import sys
 from itertools import product
 
+def strToList(string):
+    lst = list(string.split(" "))
+    return lst
+
 def list_product(lst1,lst2):
     return list(product(lst1, lst2))
 
@@ -16,7 +20,10 @@ def remove_contradict(lst):
 
 
 if __name__ == "__main__":
-    argumentList = sys.argv[1:]
+    # convert the first argument to list
+    argument = sys.argv[1]
+    argumentList = strToList(argument)
+    
     # 1st clause of variables
     list1 = argumentList[0:3]
     # 2nd clause of variables
@@ -32,6 +39,5 @@ if __name__ == "__main__":
     product13 = list_product(list1,list3)
 
     E = remove_contradict(product12) + remove_contradict(product23) + remove_contradict(product13)
-    print(str(E) + '\n')
 
     sys.stdout.write(str(E) + '\n')
